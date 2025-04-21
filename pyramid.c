@@ -1,5 +1,6 @@
 #include <time.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 void delay(int seconds) 
 {
@@ -23,8 +24,8 @@ void drawPyramid(int limit)
 	}
 }
 
-int main() 
+int main(int argc, char *argv[]) 
 {
-	drawPyramid(10);
+	drawPyramid(strtol(argv[1], NULL, 10));
 	return 0;
 }
