@@ -11,7 +11,6 @@ void drawPyramid(int limit, char text)
 			printf("%c", text);
 			temp++;
 		}
-		//delay(10);
 		usleep(100000);
 		printf("\n");
 	}
@@ -21,16 +20,21 @@ void drawPyramid(int limit, char text)
 			printf("%c", text);
 			temp--;
 		}
-		//delay(10);
 		usleep(100000);
 		printf("\n");
 	}
 }
 
+char randomChar() {
+	srand(time(0));
+	return rand() % (0x7E - 0x21 + 1) + 0x21;
+}
+
 int main(int argc, char *argv[]) 
 {
-	while (1) {
-		drawPyramid(strtol(argv[1], NULL, 10), *argv[2]);
-	}
+	//while (1) {
+	//	drawPyramid(strtol(argv[1], NULL, 10), *argv[2]);
+	//}
+	printf("%d\n", randomChar());	
 	return 0;
 }
