@@ -38,6 +38,6 @@ int main(int argc, char *argv[])
 	if (atoi(argv[1]) > 15 || atoi(argv[1]) < 5)
 		printf("Recommended Length (5 - 15)\n");
 	else
-		while (1) {drawPyramid(strtol(argv[1], NULL, 10));}
+		while (1) {drawPyramid(atoi(argv[1]));}
 	return 0;
 }
