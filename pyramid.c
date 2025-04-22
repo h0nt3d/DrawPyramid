@@ -3,12 +3,12 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void drawPyramid(int limit) 
+void drawPyramid(int limit, char text)  
 {
 	for (int i = 1; i <= limit; i++) {
 		char temp = 0;
 		while (temp < (limit - limit + i)) {
-			printf("|");
+			printf("%c", text);
 			temp++;
 		}
 		//delay(10);
@@ -18,7 +18,7 @@ void drawPyramid(int limit)
 	for (int i = 1; i <= limit; i++) {
 		char temp = limit;
 		while(temp > i - 1) {
-			printf("|");
+			printf("%c", text);
 			temp--;
 		}
 		//delay(10);
@@ -30,7 +30,7 @@ void drawPyramid(int limit)
 int main(int argc, char *argv[]) 
 {
 	while (1) {
-		drawPyramid(strtol(argv[1], NULL, 10));
+		drawPyramid(strtol(argv[1], NULL, 10), *argv[2]);
 	}
 	return 0;
 }
