@@ -35,8 +35,9 @@ void drawPyramid(int limit)
 
 int main(int argc, char *argv[]) 
 {
-	while (1) {
-		drawPyramid(strtol(argv[1], NULL, 10));
-	}	
+	if (atoi(argv[1]) > 15 || atoi(argv[1]) < 5)
+		printf("Recommended Length (5 - 15)\n");
+	else
+		while (1) {drawPyramid(strtol(argv[1], NULL, 10));}
 	return 0;
 }
