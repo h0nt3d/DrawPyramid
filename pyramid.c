@@ -15,21 +15,21 @@ void drawPyramid(int limit)
 	for (int i = 1; i <= limit; i++) {
 		int temp = 0;
 		while (temp < (limit - limit + i)) {
-			delay(5);
+			delay(10);
 			printf("%c", text);
 			temp++;
 		}
-		delay(5);
+		delay(10);
 		printf("\n");
 	}
 	for (int i = 1; i <= limit; i++) {
 		int temp = limit;
 		while(temp > i - 1) {
-			delay(5);
+			delay(10);
 			printf("%c", text);
 			temp--;
 		}
-		delay(5);
+		delay(10);
 		printf("\n");
 	}
 }
