@@ -12,7 +12,7 @@ void delay(int seconds)
 void drawPyramid(int limit) 
 {
 	char text = '|';
-	for (int i = 1; i < limit; i++) {
+	for (int i = 1; i <= limit; i++) {
 		int temp = 0;
 		while (temp < (limit - limit + i)) {
 			delay(5);
@@ -22,6 +22,7 @@ void drawPyramid(int limit)
 		delay(5);
 		printf("\n");
 	}
+	//for (int i = 1; i < limit)
 }
 
 int main(int argc, char *argv[]) 
