@@ -22,7 +22,16 @@ void drawPyramid(int limit)
 		delay(5);
 		printf("\n");
 	}
-	//for (int i = 1; i < limit)
+	for (int i = 1; i <= limit; i++) {
+		int temp = limit;
+		while(temp > i - 1) {
+			delay(5);
+			printf("%c", text);
+			temp--;
+		}
+		delay(5);
+		printf("\n");
+	}
 }
 
 int main(int argc, char *argv[]) 
