@@ -9,7 +9,7 @@ char randomChar() {
 	return rand() % (0x7E - 0x21 + 1) + 0x21;
 }
 
-void drawPyramid(int limit, char text)  
+void drawPyramid(int limit)  
 {
 	for (int i = 1; i <= limit; i++) {
 		char temp = 0;
@@ -34,7 +34,7 @@ void drawPyramid(int limit, char text)
 int main(int argc, char *argv[]) 
 {
 	while (1) {
-		drawPyramid(strtol(argv[1], NULL, 10), *argv[2]);
+		drawPyramid(strtol(argv[1], NULL, 10));
 	}
 	//printf("%c\n", randomChar());	
 	return 0;
