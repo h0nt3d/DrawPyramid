@@ -1,41 +1,36 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-void delay(int seconds) 
-{
-	int milliSeconds = 1000 * seconds;
-	clock_t startTime = clock();
-	while (clock() < startTime + milliSeconds);
-}
+#include <unistd.h>
 
 void drawPyramid(int limit) 
 {
-	char text = '|';
 	for (int i = 1; i <= limit; i++) {
-		int temp = 0;
+		char temp = 0;
 		while (temp < (limit - limit + i)) {
-			delay(10);
-			printf("%c", text);
+			printf("|");
 			temp++;
 		}
-		delay(10);
+		//delay(10);
+		usleep(100000);
 		printf("\n");
 	}
 	for (int i = 1; i <= limit; i++) {
-		int temp = limit;
+		char temp = limit;
 		while(temp > i - 1) {
-			delay(10);
-			printf("%c", text);
+			printf("|");
 			temp--;
 		}
-		delay(10);
+		//delay(10);
+		usleep(100000);
 		printf("\n");
 	}
 }
 
 int main(int argc, char *argv[]) 
 {
-	drawPyramid(strtol(argv[1], NULL, 10));
+	while (1) {
+		drawPyramid(strtol(argv[1], NULL, 10));
+	}
 	return 0;
 }
