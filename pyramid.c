@@ -35,6 +35,7 @@ void drawPyramid(int limit)
 
 int main(int argc, char *argv[]) 
 {
+	system("clear");
 	if (atoi(argv[1]) > 15 || atoi(argv[1]) < 5)
 		printf("Recommended Length (5 - 15)\n");
 	else
