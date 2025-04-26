@@ -56,10 +56,13 @@ void uninstall(char *file)
 
 int main(int argc, char *argv[]) 
 {
+	char *version = "1.0.0";
 		
 	if (argc < 2)
 		printf("Length needed. Recommended Length [5 - 15]\n");
 
+	else if (strcmp(argv[1], "-version") == 0)
+		printf("vpyramid version %s\n", version);
 
 	else if (strcmp(argv[1], "remove") == 0)
 		uninstall(argv[0]);
