@@ -1,6 +1,11 @@
+SRC = src/vpyramid.c
+DIR = /usr/bin
+PROGRAM = vpyramid
+
 build:
-	gcc src/vpyramid.c -o vpyramid
-	sudo mv vpyramid /usr/bin
+	gcc $(SRC) -o $(PROGRAM)
+	sudo mv $(PROGRAM) $(DIR)
+	clear
 
 
 	
