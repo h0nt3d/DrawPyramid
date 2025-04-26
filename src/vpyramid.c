@@ -4,9 +4,11 @@
 #include <unistd.h>
 #include <string.h>
 #include <sys/types.h>
+#include <signal.h>
 
 
-char randomChar() {
+char randomChar() 
+{
 	srand(time(0));
 	return rand() % (0x7E - 0x21 + 1) + 0x21;
 }
@@ -35,20 +37,23 @@ void drawPyramid(int limit)
 	}
 }
 
-void uninstall(char *file) {
-	char path[100];
-		chdir("/usr/bin");
-		getcwd(path, 100);
-		printf("This program is running in %s\n", path);
-		pid_t p = fork();
-		if (p == 0) {	
-			sleep(1);
-			if (remove(file) == 0) 
-				printf("vypramid succesfully removed\n");
-			else
-				printf("Unable to remove file\n");
+void uninstall(char *file) 
+{
+	chdir("/usr/bin");
+	pid_t p = fork();
+	if (p == 0) {
+		sleep(1);
+		if (remove(file) == 0) {
+			printf("vypramid removed\n");
+			fflush(stdout);
 			exit(0);
 		}
+		else {
+			printf("Unable to remove file\n");
+			fflush(stdout);
+			exit(1);
+		}
+	}
 }
 
 int main(int argc, char *argv[]) 
