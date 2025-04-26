@@ -35,21 +35,13 @@ void drawPyramid(int limit)
 	}
 }
 
-void uninstall() {
-	printf("\n");
-}
-
-int main(int argc, char *argv[]) 
-{
-	
-	if (strcmp(argv[1], "remove") == 0) {
-		char path[100];
+void uninstall(char *file) {
+	char path[100];
 		chdir("/usr/bin");
 		getcwd(path, 100);
 		printf("This program is running in %s\n", path);
 		pid_t p = fork();
-		if (p == 0) {
-			char *file = argv[0];
+		if (p == 0) {	
 			sleep(1);
 			if (remove(file) == 0) 
 				printf("vypramid succesfully removed\n");
@@ -57,7 +49,13 @@ int main(int argc, char *argv[])
 				printf("Unable to remove file\n");
 			exit(0);
 		}
-			
+}
+
+int main(int argc, char *argv[]) 
+{
+	
+	if (strcmp(argv[1], "remove") == 0) {
+		uninstall(argv[0]);
 	}
 		
 	else if (argc < 2)
