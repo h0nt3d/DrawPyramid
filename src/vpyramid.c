@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <sys/types.h>
-#include <signal.h>
+#include <sys/wait.h>
 
 
 char randomChar() 
@@ -42,23 +42,31 @@ void uninstall(char *file)
 	chdir("/usr/bin");
 	pid_t p = fork();
 	if (p == 0) {
-		kill(getppid(), SIGTERM);
 		sleep(1);
-		remove(file);
+		if (remove(file) == 0)
+			printf("vpyramid removed\n");
+		else
+			printf("Unable to remove file\n");
+		exit(0);
+	}
+	else if (p > 0) {
+		wait(NULL);
 	}
 }
 
 int main(int argc, char *argv[]) 
 {
-	
-	if (strcmp(argv[1], "remove") == 0) {
-		uninstall(argv[0]);
-	}
 		
-	else if (argc < 2)
+	if (argc < 2)
 		printf("Length needed. Recommended Length [5 - 15]\n");
+
+
+	else if (strcmp(argv[1], "remove") == 0)
+		uninstall(argv[0]);
+
 	else if (atoi(argv[1]) > 15 || atoi(argv[1]) < 5)
 		printf("Recommended Length [5 - 15]\n");
+
 	else {
 		system("clear");
 		while (1) {drawPyramid(atoi(argv[1]));}
