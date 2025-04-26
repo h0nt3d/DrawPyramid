@@ -1,4 +1,6 @@
 # vpyramid
+![alt text](https://github.com/h0nt3d/vpyrmaid/blob/main/images/logo.png?raw=true)
+
 vpyramid is a simple and fun script that displays vertical pyramid ASCII art on your linux terminal using randomly generated characters.
 
 ## Installation
