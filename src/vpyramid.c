@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 
 char randomChar() {
@@ -33,9 +34,25 @@ void drawPyramid(int limit)
 	}
 }
 
+void uninstall() {
+	if (chdir("/usr/bin") != 0)
+			perror("Falied to change directory.");
+		char path[100];
+		getcwd(path, 100);
+		printf("This program in %s\n", path);
+		char *file = "vpyramid";
+		if (remove(file) == 0) 
+			printf("vypramid succesfully removed\n");
+		else
+			printf("Unable to remove file\n");
+
+}
+
 int main(int argc, char *argv[]) 
 {
-	if (argc < 2)
+	if (strcmp(argv[1], "remove") == 0)
+		uninstall();
+	else if (argc < 2)
 		printf("Length needed. Recommended Length [5 - 15]\n");
 	else if (atoi(argv[1]) > 15 || atoi(argv[1]) < 5)
 		printf("Recommended Length [5 - 15]\n");
