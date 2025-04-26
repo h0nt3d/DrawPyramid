@@ -3,6 +3,6 @@ build:
 	sudo mv vpyramid /usr/bin
 
 clean:
-	rm -rf /usr/bin/vpyramid
+	sudo rm -rf /usr/bin/vpyramid
 	
 
