@@ -4,7 +4,6 @@
 #include <unistd.h>
 #include <string.h>
 #include <sys/types.h>
-#include <signal.h>
 
 
 char randomChar() 
