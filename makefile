@@ -1,3 +1,4 @@
 build:
-	gcc pyramid.c -o pyramid
+	gcc src/vpyramid.c -o vpyramid
+	mv
 
