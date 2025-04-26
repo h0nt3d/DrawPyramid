@@ -10,7 +10,7 @@
 char randomChar() 
 {
 	srand(time(0));
-	return rand() % (0x7E - 0x21 + 1) + 0x21;
+	return rand() % (0x7E - 0x21 + 1) + 0x21; //ASCII of Characters
 }
 
 void drawPyramid(int limit)  
