@@ -46,7 +46,7 @@ void uninstall(char *file)
 		if (remove(file) == 0)
 			printf("vpyramid removed\n");
 		else
-			printf("Unable to remove file\n");
+			printf("Unable to remove file, make sure to use sudo\n");
 		exit(0);
 	}
 	else if (p > 0) {
