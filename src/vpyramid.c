@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/types.h>
 
 
 char randomChar() {
@@ -35,23 +36,30 @@ void drawPyramid(int limit)
 }
 
 void uninstall() {
-	if (chdir("/usr/bin") != 0)
-			perror("Falied to change directory.");
-		char path[100];
-		getcwd(path, 100);
-		printf("This program in %s\n", path);
-		char *file = "vpyramid";
-		if (remove(file) == 0) 
-			printf("vypramid succesfully removed\n");
-		else
-			printf("Unable to remove file\n");
-
+	printf("\n");
 }
 
 int main(int argc, char *argv[]) 
 {
-	if (strcmp(argv[1], "remove") == 0)
-		uninstall();
+	
+	if (strcmp(argv[1], "remove") == 0) {
+		char path[100];
+		chdir("/usr/bin");
+		getcwd(path, 100);
+		printf("This program is running in %s\n", path);
+		pid_t p = fork();
+		if (p == 0) {
+			char *file = argv[0];
+			sleep(1);
+			if (remove(file) == 0) 
+				printf("vypramid succesfully removed\n");
+			else
+				printf("Unable to remove file\n");
+			exit(0);
+		}
+			
+	}
+		
 	else if (argc < 2)
 		printf("Length needed. Recommended Length [5 - 15]\n");
 	else if (atoi(argv[1]) > 15 || atoi(argv[1]) < 5)
@@ -60,5 +68,6 @@ int main(int argc, char *argv[])
 		system("clear");
 		while (1) {drawPyramid(atoi(argv[1]));}
 	}
+	
 	return 0;
 }
