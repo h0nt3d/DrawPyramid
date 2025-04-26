@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <sys/types.h>
+#include <signal.h>
 
 
 char randomChar() 
@@ -41,17 +42,9 @@ void uninstall(char *file)
 	chdir("/usr/bin");
 	pid_t p = fork();
 	if (p == 0) {
+		kill(getppid(), SIGTERM);
 		sleep(1);
-		if (remove(file) == 0) {
-			printf("vypramid removed\n");
-			fflush(stdout);
-			exit(0);
-		}
-		else {
-			printf("Unable to remove file\n");
-			fflush(stdout);
-			exit(1);
-		}
+		remove(file);
 	}
 }
 
